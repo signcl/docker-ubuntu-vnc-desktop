@@ -32,7 +32,7 @@ class State(object):
             'supervisorctl', '-c', '/etc/supervisor/supervisord.conf',
             'status'
         ])
-        for line in output.strip().split('\n'):
+        for line in output.decode('utf-8').strip().split('\n'):
             if not line.startswith('web') and line.find('RUNNING') < 0:
                 health = False
                 break
